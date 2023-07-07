@@ -5,6 +5,7 @@ load_dotenv()
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+from decouple import config
 
 
 # Quick-start development settings - unsuitable for production
@@ -69,7 +70,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'support_services.wsgi.application'
 AUTH_USER_MODEL = 'users.User'
-
 #database
 DATABASES = {  
     'default': {  
@@ -81,6 +81,19 @@ DATABASES = {
         'PORT': os.environ['PORT']  
     }  
 }  
+
+#for development
+# import os
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': os.environ.get('MYSQL_DATABASE', 'docker'),
+#         'USER': os.environ.get('MYSQL_USER', 'docker'),
+#         'PASSWORD': os.environ.get('MYSQL_PASSWORD', 'Test@2023'),
+#         'HOST': os.environ.get('MYSQL_DATABASE_HOST', '127.0.0.1'),
+#         'PORT': os.environ.get('MYSQL_DATABASE_PORT', 3306),
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

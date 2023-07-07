@@ -70,7 +70,7 @@ class LogOutView(APIView):
     def post(self, request, *args, **kwargs):
         token = request.META['HTTP_BEARER']
         check_authentication = get_current_user(token)
-        user = User.objects.get(id=check_authentication['data'])
+        user = User.objects.get(uid=check_authentication['data'])
         UserBlackListedToken.objects.update_or_create(token=token, user=user)
         return Response({
             "status": True,

@@ -1,3 +1,31 @@
+# version: '3'
+
+# services: 
+#   db:
+#     image: mysql:8
+#     ports:
+#       - '3366:3306'
+#     environment:
+#        MYSQL_DATABASE: 'docker'
+#        MYSQL_USER: 'docker'
+#        MYSQL_PASSWORD: 'Test@2023'
+#        MYSQL_ROOT_PASSWORD: 'Prismware@2023'
+    
+#     volumes:
+#       - .setup.sql:/docker-entrypoint-initbd.d/setup.sql
+
+#   web:
+#     build: .
+#     command: python manage.py runserver 0.0.0.0:8000
+#     volumes:
+#       - .:/code
+
+#     ports:
+#       - "8000:8000"
+#     depends_on:
+#       - db
+#     links: 
+# #       - db 
 version: '3'
 
 services: 
@@ -6,11 +34,10 @@ services:
     ports:
       - '3366:3306'
     environment:
-       MYSQL_DATABASE: 'synaptical'
-       MYSQL_USER: 'synaptical'
+       MYSQL_DATABASE: 'docker'
+       MYSQL_USER: 'docker'
        MYSQL_PASSWORD: 'Test@2023'
        MYSQL_ROOT_PASSWORD: 'Prismware@2023'
-    
     volumes:
       - .setup.sql:/docker-entrypoint-initbd.d/setup.sql
 
@@ -19,7 +46,6 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
-
     ports:
       - "8000:8000"
     depends_on:
